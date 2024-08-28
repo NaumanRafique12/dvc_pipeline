@@ -3,7 +3,17 @@ stages:
       cmd: python src/data_ingestion.py
       deps:
       - src/data_ingestion.py
+     
       outs: 
+      - data/data
+    data_splitting:
+      cmd: python src/data_splitting.py
+      deps:
+      - data/data
+      - src/data_splitting.py
+       params:
+      - data_splitting.test_size
+      outs:
       - data/raw
     data_preprocessing:
       cmd: python src/data_preprocessing.py
@@ -30,7 +40,7 @@ stages:
       cmd: python src/model_evaluation.py
       deps:
       - model
-      - src/model_evaluation
+      - src/model_evaluation.py
       outs:
       - metrics
 # name:

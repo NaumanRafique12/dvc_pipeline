@@ -8,9 +8,8 @@ df = pd.read_csv(data_url)
 df.drop(columns=['tweet_id'], inplace=True)
 final_df = df[df['sentiment'].isin(['happiness', 'sadness'])]
 final_df['sentiment'].replace({'happiness': 1, 'sadness': 0}, inplace=True)
-train_data, test_data = train_test_split(final_df, test_size=0.2, random_state=42)
-
-data_path = os.path.join("data", 'raw')
+ 
+data_path = os.path.join("data", 'data')
 os.makedirs(data_path, exist_ok=True)
-train_data.to_csv(os.path.join(data_path, "train.csv"), index=False)
-test_data.to_csv(os.path.join(data_path, "test.csv"), index=False)
+final_df.to_csv(os.path.join(data_path, "data.csv"), index=False)
+ 
