@@ -26,5 +26,12 @@ stages:
       - src/model_building.py
       outs:
       - model
+    model_evaluation:
+      cmd: python src/model_evaluation.py
+      deps:
+      - model
+      - src/model_evaluation
+      outs:
+      - metrics
 # name:
 # CMD
